@@ -1,0 +1,32 @@
+<h1>New Wiki</h1>
+
+<div class="row">
+  <div class="col-md-4">
+    <p>Guidelines for Wikis:</p>
+    <ul>
+      <li>Do not say "And then I took an arrow to the knee".</li>
+      <li>Don't talk about stealing sweet rolls.</li>
+      <li>Avoid debates about the Stormcloaks vs. Imperials.</li>
+    </ul>
+  </div>
+
+  <div class="col-md-8">
+    <%= form_for @wiki do |f| %>
+      <div class="form-group">
+        <%= f.label :name %>
+        <%= f.text_field :title, class: 'form-control', placeholder: "Enter wiki title" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :description %>
+        <%= f.text_area :body, rows: 8, class: 'form-control', placeholder: "Enter wiki body" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :public, class: 'checkbox' do %>
+          <%= f.check_box :private %> Private wiki
+        <% end %>
+      </div>
+      <%= f.submit "Save", class: 'btn btn-success' %>
+    <% end %>
+  </div>
+
+</div>
