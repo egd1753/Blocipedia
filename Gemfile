@@ -62,8 +62,14 @@ group :production do
   gem 'rails_12factor'
 end
 
+# CSS styling
 gem 'bootstrap-sass'
 
+# A flexible authentication solution for Rails with Warden
 gem 'devise'
 
+# Helps to securely configure Rails applications by using Env vars
 gem 'figaro', '1.0'
+
+# Provides a set of helpers to aid authorization and specifying rolls
+gem "pundit"
