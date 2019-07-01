@@ -53,6 +53,8 @@ end
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'rails-controller-testing'
+  # A library for generating fake data for seeding
+  gem 'faker'  
 end
 
 
