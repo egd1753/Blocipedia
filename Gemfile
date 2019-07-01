@@ -54,7 +54,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'rails-controller-testing'
   # A library for generating fake data for seeding
-  gem 'faker'  
+  gem 'faker'
 end
 
 
@@ -75,3 +75,6 @@ gem 'figaro', '1.0'
 
 # Provides a set of helpers to aid authorization and specifying rolls
 gem "pundit"
+
+# Simplifies working with Stripe's payment processing API
+gem 'stripe'
