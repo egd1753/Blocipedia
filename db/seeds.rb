@@ -9,6 +9,7 @@ require 'faker'
 
 50.times do
   User.create!(
+    name: Faker::Name.unique.name,
     email: Faker::Internet.unique.email,
     password: 'password'
   )
@@ -18,7 +19,7 @@ users = User.all
 
 100.times do
   Wiki.create!(
-    title: Faker::Hacker.phrases[0].to_str,
+    title: Faker::Hacker.phrases[1].to_str,
     body: Faker::Hacker.say_something_smart,
     user_id: users.sample.id
   )
