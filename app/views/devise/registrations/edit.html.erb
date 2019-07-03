@@ -1,5 +1,8 @@
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
+<h4>Account type: <%= current_user.role %></h4>
+<h4>Name: <%= current_user.name %></h4>
+
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
@@ -36,12 +39,19 @@
   </div>
 <% end %>
 
-<h3>Upgrade to Premium</h3>
-
-<p>
-  Create private wikis with the premium feature!
-  <%= button_to "Upgrade Me!", charges_path %>
-</p>
+<% if (current_user.role == 'standard') %>
+  <h3>Upgrade to Premium</h3>
+    <p>
+      Create private wikis with the premium feature!
+      <%= button_to "Upgrade Me!", charges_path %>
+    </p>
+<% else %>
+  <h3>Downgrade back to standard</h3>
+    <p>
+      If you change your mind you can upgrade again at any time
+      <%= button_to "Back to Basics" %>
+    </p>
+<% end %>
 
 
 <h3>Cancel my account</h3>
