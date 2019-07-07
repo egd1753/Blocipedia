@@ -21,6 +21,7 @@ users = User.all
   Wiki.create!(
     title: Faker::Hacker.phrases[1].to_str,
     body: Faker::Hacker.say_something_smart,
+    private: false,
     user_id: users.sample.id
   )
 end

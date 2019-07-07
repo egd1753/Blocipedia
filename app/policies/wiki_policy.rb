@@ -1,16 +1,25 @@
 class WikiPolicy
-  attr_reader :user, :wiki
+  class Scope
+    attr_reader :user, :wiki
+
+    def initialize(user, wiki)
+      @user = user
+      @wiki = wiki
+    end
+
+    def index?
+      true
+    end
+
+    def resolve
+      if @user.admin? || @user.premium?
+        wiki.all
+      else
+        wiki.where(private: false)
+      end
+    end
 
 
-  def initialize(user, post)
-    @user = user
-    @post = post
   end
-
-
-  def show?
-    user.premium? or user.admin?
-  end
-
 
 end

@@ -7,6 +7,8 @@ class User < ApplicationRecord
   def set_default_role
     self.role ||= :standard
     self.standard = true
+    self.admin = false
+    self.premium = false
   end
 
 
