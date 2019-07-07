@@ -9,11 +9,13 @@ class WikisController < ApplicationController
   end
 
 
+  # GET
   def new
     @wiki = Wiki.new
   end
 
 
+  # POST
   def create
     @wiki = Wiki.new
     @wiki.title = params[:wiki][:title]
