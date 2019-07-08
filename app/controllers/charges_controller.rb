@@ -45,6 +45,8 @@ class ChargesController < ApplicationController
 
   def update_user_role
     current_user.role = 'premium'
+    current_user.standard = false
+    current_user.premium = true    
     current_user.save!
   end
 

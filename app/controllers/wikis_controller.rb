@@ -1,4 +1,6 @@
 class WikisController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @wikis = Wiki.all
   end
@@ -18,7 +20,11 @@ class WikisController < ApplicationController
     @wiki = Wiki.new
     @wiki.title = params[:wiki][:title]
     @wiki.body = params[:wiki][:body]
+    @wiki.private = params[:wiki][:private]
     @wiki.user = current_user
+    if @wiki.user.standard?
+      @wiki.private = false
+    end
     if @wiki.save
       flash[:notice] = "Wiki was saved."
       redirect_to :wikis
@@ -45,19 +51,18 @@ class WikisController < ApplicationController
       flash.now[:alert] = "There was an error updating the wiki. Please try again."
       render :edit
     end
-
-
-    def destroy
-      @wiki = Wiki.find(params[:id])
-      if @wiki.destroy
-        flash[:notice] = "\"#{@wiki.title}\" was deleted successfully."
-        redirect_to action: :index
-      else
-        flash.now[:alert] = "There was an error deleting the wiki."
-        render :show
-      end
-    end
   end
 
+
+  def destroy
+    @wiki = Wiki.find(params[:id])
+    if @wiki.destroy
+      flash[:notice] = "\"#{@wiki.title}\" was deleted successfully."
+      redirect_to action: :index
+    else
+      flash.now[:alert] = "There was an error deleting the wiki."
+      render :show
+    end
+  end
 
 end

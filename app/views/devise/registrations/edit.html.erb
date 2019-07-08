@@ -39,7 +39,7 @@
   </div>
 <% end %>
 
-<% if (current_user.role == 'standard') %>
+<% if (current_user.standard?) %>
   <h3>Upgrade to Premium</h3>
     <p>
       Create private wikis with the premium feature!
@@ -49,7 +49,7 @@
   <h3>Downgrade back to standard</h3>
     <p>
       If you change your mind you can upgrade again at any time
-      <%= button_to "Back to Basics" %>
+      <%= button_to "Back to Basics", user_path(@user), method: :put  %>
     </p>
 <% end %>
 
