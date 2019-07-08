@@ -1,20 +1,27 @@
 class UsersController < ApplicationController
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
+
   def update
     @user = User.find(params[:id])
-    @user.role = params[:user][:role]
+    @private_wikis = @user.wikis.where(private: true)
+
     if @user.role == 'premium'
-      current_user.role = 'standard'
-      current_user.premium = false
-      current_user.standard = true
-      @user.save
+      @user.role = 'standard'
+      @user.premium = false
+      @user.standard = true
+      @private_wikis.update_all(private: false)
+
     end
     if @user.save
       flash[:notice] = "User was updated."
-      redirect_to @user
     else
       flash.now[:alert] = "There was an error updating the user. Please try again."
       render :edit
+    end
   end
 
 end

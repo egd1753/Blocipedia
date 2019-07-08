@@ -48,8 +48,9 @@
 <% else %>
   <h3>Downgrade back to standard</h3>
     <p>
+      Just as a reminder, any private wikis that you may have created will become public
       If you change your mind you can upgrade again at any time
-      <%= button_to "Back to Basics", users_path %>
+      <%= button_to "Back to Basics", user_path(@user), method: :put  %>
     </p>
 <% end %>
 

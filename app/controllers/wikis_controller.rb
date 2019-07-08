@@ -22,6 +22,9 @@ class WikisController < ApplicationController
     @wiki.body = params[:wiki][:body]
     @wiki.private = params[:wiki][:private]
     @wiki.user = current_user
+    if @wiki.user.standard?
+      @wiki.private = false
+    end
     if @wiki.save
       flash[:notice] = "Wiki was saved."
       redirect_to :wikis
