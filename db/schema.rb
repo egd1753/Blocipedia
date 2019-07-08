@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2019_07_08_182758) do
+=======
+ActiveRecord::Schema.define(version: 2019_07_03_202127) do
+>>>>>>> checkpoint-7-p_wikis
 
   create_table "fees", force: :cascade do |t|
     t.datetime "created_at", null: false

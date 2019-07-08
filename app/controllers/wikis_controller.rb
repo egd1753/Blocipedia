@@ -11,11 +11,13 @@ class WikisController < ApplicationController
   end
 
 
+  # GET
   def new
     @wiki = Wiki.new
   end
 
 
+  # POST
   def create
     @wiki = Wiki.new
     @wiki.title = params[:wiki][:title]
@@ -44,6 +46,7 @@ class WikisController < ApplicationController
     @wiki = Wiki.find(params[:id])
     @wiki.title = params[:wiki][:title]
     @wiki.body = params[:wiki][:body]
+    @wiki.private = params[:wiki][:private]
     if @wiki.save
       flash[:notice] = "Wiki was updated."
       redirect_to @wiki
