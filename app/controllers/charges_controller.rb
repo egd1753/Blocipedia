@@ -1,5 +1,5 @@
 class ChargesController < ApplicationController
-  after_action :update_user_role, only: :create
+  after_action :upgrade_to_premium, only: :create
 
 
   def new
@@ -43,10 +43,10 @@ class ChargesController < ApplicationController
 
 
 
-  def update_user_role
+  def upgrade_to_premium
     current_user.role = 'premium'
     current_user.standard = false
-    current_user.premium = true    
+    current_user.premium = true
     current_user.save!
   end
 

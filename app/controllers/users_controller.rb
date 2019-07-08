@@ -7,11 +7,13 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
+    @private_wikis = @user.wikis.where(private: true)
 
     if @user.role == 'premium'
       @user.role = 'standard'
       @user.premium = false
       @user.standard = true
+      @private_wikis.update_all(private: false)
 
     end
     if @user.save

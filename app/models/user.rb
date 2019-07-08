@@ -8,14 +8,14 @@ class User < ApplicationRecord
     self.role ||= :standard
     self.standard = true
     self.admin = false
-    self.premium = false    
+    self.premium = false
   end
 
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :confirmable
+         :recoverable, :rememberable, :validatable # :confirmable
 
 
 end
