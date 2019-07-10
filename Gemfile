@@ -78,3 +78,12 @@ gem "pundit"
 
 # Simplifies working with Stripe's payment processing API
 gem 'stripe'
+
+# Parses Mardown syntax
+gem 'redcarpet'
+
+# Makes code in Markdown look prettier
+gem 'albino'
+
+# Reads/interprets/parses HTML that Redcarpet generates
+gem 'nokogiri'
