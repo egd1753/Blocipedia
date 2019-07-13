@@ -4,7 +4,7 @@
   <%= link_to "New Wiki", new_wiki_path(@wiki), class: 'btn btn-success' %>
 </div>
 
-<% policy_scope(@wikis).each do |wiki| %>
+<% policy(@wikis).each do |wiki| %>
 <div class="media">
   <div class="media-body">
     <h4 class="media-heading">

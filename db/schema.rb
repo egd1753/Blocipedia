@@ -44,8 +44,6 @@ ActiveRecord::Schema.define(version: 2019_07_10_173532) do
     t.boolean "standard"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index [nil], name: "index_users_on_confirmation_token", unique: true
-    t.index [nil], name: "index_users_on_unlock_token", unique: true
   end
 
   create_table "wikis", force: :cascade do |t|
