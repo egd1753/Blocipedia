@@ -1,4 +1,4 @@
-class WikiPolicy < ApplicationPolicy
+class WikiPolicy
    class Scope
      attr_reader :user, :scope
 
@@ -6,6 +6,11 @@ class WikiPolicy < ApplicationPolicy
        @user = user
        @scope = scope
      end
+
+     def index?
+       true
+     end
+
 
      def resolve
        wikis = []
