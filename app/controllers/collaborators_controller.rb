@@ -1,5 +1,9 @@
 class CollaboratorsController < ApplicationController
 
+  def new
+    @collaborator = Collaborator.new
+  end
+
 # POST
   def create
     @collaborator = Collaborator.new

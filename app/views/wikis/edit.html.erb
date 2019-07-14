@@ -32,7 +32,7 @@
     <% end %>
 
     <div>
-      <%= render 'collaborators/collaborator_form', locals: { wiki: @wiki } %>
+      <%= render 'collaborators/collaborator_form', locals: { wiki: @wiki, collaborator: Collaborator.new } %>
     </div>
 
   </div>

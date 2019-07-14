@@ -1,4 +1,4 @@
-<%= form_for @collaborator do |f| %>
+<%= form_for [wiki, collaborator] do |f| %>
   <div class="form-group">
     <%= f.label :email %>
     <%= f.email_field(:email) %>
