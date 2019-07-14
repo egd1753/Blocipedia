@@ -1,4 +1,6 @@
-<div class="form-group">
-  <%= f.label :email %>
-  <%= f.email_field(:email) %>
-</div>
+<%= form_for @collaborator do |f| %>
+  <div class="form-group">
+    <%= f.label :email %>
+    <%= f.email_field(:email) %>
+  </div>
+<% end %>
