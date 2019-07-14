@@ -25,11 +25,17 @@
       <div>
         <%= render "wikis/form", f: f %>
       </div>
-            
+
       <div class="form-group">
         <%= f.submit "Save", class: 'btn btn-success' %>
       </div>
     <% end %>
+
+    <div class="form-group">
+      <%= f.label :email %>
+      <%= f.email_field(:email) %>
+    </div>
+
   </div>
 
 </div>
