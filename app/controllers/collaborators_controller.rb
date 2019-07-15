@@ -7,9 +7,9 @@ class CollaboratorsController < ApplicationController
 # POST
   def create
     @collaborator = Collaborator.new
-    @collaborator.wiki_id = params[:wiki][:id]
-    collaborator = User.find(params[:email])
-    @collaborator.user_id = collaborator.id
+    @collaborator.wiki_id = :wiki_id
+    collab_email = User.find_by(email: :add_collaborator)
+    @collaborator.user_id = collab_email
     @collaborator.save!
   end
 
