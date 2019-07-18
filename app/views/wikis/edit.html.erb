@@ -33,6 +33,7 @@
 
     <div>
       <%= render 'collaborators/collaborator_form', wiki: @wiki, collaborator: Collaborator.new %>
+      <%= render 'collaborators/collaborator_form_delete', wiki: @wiki, collaborator: @collaborator %>
     </div>
 
   </div>

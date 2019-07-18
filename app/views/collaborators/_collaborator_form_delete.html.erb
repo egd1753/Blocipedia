@@ -1,0 +1,7 @@
+  <%= form_tag([wiki, collaborator], method: :delete) do %>
+    <div class="form-group">
+      <%= label_tag :remove_collaborator %>
+      <%= text_field_tag :remove_collaborator %>
+      <%= submit_tag "Remove", class: 'btn btn-danger' %>
+    </div>
+  <% end %>
