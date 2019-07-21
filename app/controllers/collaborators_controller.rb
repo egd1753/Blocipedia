@@ -24,7 +24,7 @@ class CollaboratorsController < ApplicationController
   def destroy
     @collab_user = User.find_by(email: params[:remove_collaborator])
     @wiki = Wiki.find(params[:wiki_id])
-    @collaborator = @wiki.collaborators.where(user_id: @collab_user.id)
+    @collaborator = Collaborator.where( (user_id: @collab_user.id) && (wiki_id: @wiki.id) )
     if @collaborator
       @collaborator.destroy
       flash[:notice] = "You have successfully removed #{params[:remove_collaborator]} from this wiki."
