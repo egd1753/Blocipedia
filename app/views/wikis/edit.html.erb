@@ -38,7 +38,7 @@
         <div class="media-body">
           <h4 class="media-heading">
             <%= collaborator.user.email %>
-            <%= render 'collaborators/collaborator_form_delete', collaborator: collaborator.id, wiki: @wiki, method: :delete %>
+            <%= link_to "Remove", [collaborator.wiki, collaborator], method: :delete, class: "btn btn-danger" %>
           </h4>
         </div>
       </div>
