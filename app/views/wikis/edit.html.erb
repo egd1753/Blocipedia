@@ -32,8 +32,21 @@
     <% end %>
 
     <div>
+      <h5><strong>Collaborators for this wiki:</strong></h5>
+      <% @wiki.collaborators.each do |collaborator| %>
+      <div class="media">
+        <div class="media-body">
+          <h4 class="media-heading">
+            <%= collaborator.user.email %>
+            <%= render 'collaborators/collaborator_form_delete', collaborator: collaborator.id, wiki: @wiki, method: :delete %>
+          </h4>
+        </div>
+      </div>
+      <% end %>
+    </div>
+
+    <div>
       <%= render 'collaborators/collaborator_form', wiki: @wiki, collaborator: Collaborator.new %>
-      <%= render 'collaborators/collaborator_form_delete', wiki: @wiki, collaborator: @collaborator %>
     </div>
 
   </div>

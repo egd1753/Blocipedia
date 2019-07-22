@@ -22,17 +22,26 @@ class CollaboratorsController < ApplicationController
 
 
   def destroy
-    @collab_user = User.find_by(email: params[:remove_collaborator])
-    @wiki = Wiki.find(params[:wiki_id])
-    @collaborator = Collaborator.where( (user_id: @collab_user.id) && (wiki_id: @wiki.id) )
-    if @collaborator
-      @collaborator.destroy
-      flash[:notice] = "You have successfully removed #{params[:remove_collaborator]} from this wiki."
+    @collaborator = Collaborator.find(params[collaborator.id])
+    if @collaborator.destroy
+      flash[:notice] = "You have successfully removed a collaborator from this wiki."
       redirect_to @wiki
     else
-      flash[:notice] = "Error, either: #{params[:remove_collaborator]} was spelled wrong, or #{params[:remove_collaborator]} is not a collaborator on this wiki."
+      flash[:notice] = "Error deleting collaborator. Some kind of error happened. Dilate the reverse flux drive and try again. "
       redirect_to @wiki
     end
+
+#    @collab_user = User.find_by(email: params[:remove_collaborator])
+#    @wiki = Wiki.find(params[:wiki_id])
+#    @collaborator = Collaborator.where( (user_id: @collab_user.id) && (wiki_id: @wiki.id) )
+#    if @collaborator
+#      @collaborator.destroy
+#      flash[:notice] = "You have successfully removed #{params[:remove_collaborator]} from this wiki."
+#      redirect_to @wiki
+#    else
+#      flash[:notice] = "Error, either: #{params[:remove_collaborator]} was spelled wrong, or #{params[:remove_collaborator]} is not a collaborator on this wiki."
+#      redirect_to @wiki
+#    end
   end
 
 end
