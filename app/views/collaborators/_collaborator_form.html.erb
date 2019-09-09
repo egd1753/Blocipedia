@@ -1,5 +1,17 @@
 
   <%= form_tag([wiki, collaborator], method: :post) do %>
+    <% if collaborator.errors.any? %>
+      <div class="alert alert-danger">
+        <h4><%= pluralize(collaborator.errors.count, "error") %>.</h4>
+        <ul>
+          <% collaborator.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+
     <div class="form-group">
       <%= label_tag :add_collaborator %>
       <%= text_field_tag :add_collaborator %>

@@ -2,20 +2,21 @@ class CollaboratorsController < ApplicationController
 
 
   def new
+    @wiki = Wiki.find(params[:wiki_id])
     @collaborator = Collaborator.new
   end
 
 # POST
   def create
-    @collab_user = User.find_by(email: params[:add_collaborator])
+    @collaborator = Collaborator.new
+    @collaborator.user_id = User.find_by(email: params[:add_collaborator])
     @wiki = Wiki.find(params[:wiki_id])
-    if @wiki.collaborators.exists?(user_id: @collab_user.id)
-      flash[:alert] = "This user is already a collaborator for this wiki."
+    @collaborator.wiki = @wiki
+    if (@collaborator.save)
+      flash[:notice] = "You have successfully added #{params[:add_collaborator]} as a collaborator."
       redirect_to @wiki
     else
-      @collaborator = Collaborator.new(user_id: @collab_user.id, wiki_id: @wiki.id)
-      @collaborator.save!
-      flash[:notice] = "You have successfully added #{params[:add_collaborator]} as a collaborator."
+      flash[:alert] = "There was an error. Please try again."
       redirect_to @wiki
     end
   end
